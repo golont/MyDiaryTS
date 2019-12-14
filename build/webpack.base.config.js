@@ -68,7 +68,16 @@ module.exports = {
                     },
                     {
                         loader: "sass-loader",
-                        options: { sourceMap: true }
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "sass-resources-loader",
+                        options: {
+                            sourceMap: true,
+                            resources: `${PATHS.src}/assets/scss/utils/**/*.scss`
+                        }
                     }
                 ]
             },
@@ -130,6 +139,6 @@ module.exports = {
             template: `${PATHS.src}/index.html`,
             filename: "./index.html"
             // inject: false
-        }),
+        })
     ]
 };

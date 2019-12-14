@@ -1,6 +1,13 @@
 import "./assets/scss/main.scss";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import Hello from "Ts/app/app";
- 
-ReactDOM.render(<Hello />, document.getElementById("root"));
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "Ts/app/app";
+
+const Index: React.FC = () => (
+    <Router>
+        <App />
+    </Router>
+);
+
+ReactDOM.render(<Index />, document.getElementById("root"));

@@ -1,17 +1,14 @@
 import React from "react";
+import Button from "Components/button";
 
 const App: React.FC = () => {
     return (
         <>
             <div className="container">
                 <h1 className="title">Hello types</h1>
-                <button
-                    onClick={() => {
-                        console.log("somethin");
-                    }}
-                >
-                    something
-                </button>
+                <Button />
+                <Button outside={true} href="https://www.twitch.tv/dinablin"/>
+                <Button href="lol"/>
             </div>
         </>
     );
