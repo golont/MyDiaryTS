@@ -15,3 +15,20 @@
     width: $width;
     height: $height;
 }
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin shadow(
+    $horizontalOffset: -5px,
+    $verticalOffset: 5px,
+    $blurRadius: 10px,
+    $spreadRadius: 0,
+    $color: $shadowColor
+) {
+    box-shadow: $horizontalOffset $verticalOffset $blurRadius $spreadRadius
+        $color;
+}

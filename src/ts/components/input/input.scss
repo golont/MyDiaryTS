@@ -1,0 +1,16 @@
+.input {
+    font-family: $mainFont;
+    font-size: $mainFontSize;
+    font-weight: $mainFontWeight;
+    transition: .5s all;
+    background: none;
+    color: $mainFontColor;
+    padding: rem(10);
+    border: 3px solid transparent;
+    outline: none;
+    border-bottom: 3px solid $borderColor;
+
+    &:focus {
+        border: 3px solid $neutralMenuColor;
+    }
+}

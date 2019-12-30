@@ -4,21 +4,23 @@ import cn from "classnames";
 import "./button.scss";
 
 export interface ButtonProps {
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
     href?: string;
     outside?: boolean;
     children?: React.ReactNode;
-    disabled?: boolean
+    disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
     children = "Button",
-    onClick,
-    className,
-    href,
-    outside,
-    disabled,
+    onClick = () => {
+        console.log("Button onClick function isn't provided");
+    },
+    className = "",
+    href = "",
+    outside = false,
+    disabled = false,
     ...attrs
 }) => {
     const classes: string = cn("button", className, disabled);
