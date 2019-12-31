@@ -13,4 +13,14 @@
     &:focus {
         border: 3px solid $neutralMenuColor;
     }
+
+    &.input-dark {
+        background: white;
+    }
+}
+
+.textarea {
+    &.textarea-dark {
+
+    }
 }

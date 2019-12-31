@@ -1,0 +1,47 @@
+.theme-toggler {
+    position: fixed;
+    left: rem(10);
+    bottom: rem(10);
+    width: rem(60);
+    height: rem(60);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-animation: togglerColor 1s ease;
+    animation: togglerColor 1s ease;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    &__lang {
+        left: rem(10);
+        bottom: rem(75);
+        animation: none;
+    }
+
+    &-dark {
+        animation-direction: reverse;
+    }
+}
+
+.eng {
+    background: url("/assets/img/eng.png") 50% / cover;
+}
+
+.rus {
+    background: url("/assets/img/rus.png") 50% / cover;
+}
+
+@keyframes togglerColor {
+    0% {
+        background: #f09b46;
+        color: #45161c;
+        border: 1px solid #45161c;
+    }
+    to {
+        background: #45161c;
+        color: #f09b46;
+        border: 1px solid #f09b46;
+    }
+}

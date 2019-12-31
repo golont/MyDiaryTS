@@ -2,11 +2,10 @@ import React from "react";
 import cn from "classnames";
 import Portal from "./../portal";
 import "./background.scss";
-import { useTheme } from "Ts/utils/app";
+import { useDarkTheme } from "Ts/utils/useDark";
 
 const Background: React.FC = React.memo(() => {
-    const { isDark, toggleTheme } = useTheme();
-    const classes: string = cn("background", { "background-dark": isDark });
+    const classes: string = useDarkTheme(cn("background"));
     return <Portal className={classes} />;
 });
 

@@ -1,0 +1,45 @@
+.header {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    height: 110px;
+    background: $neutralMenuColor;
+    width: 100%;
+    border-bottom: 5px solid $borderColor;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+
+    &__logo {
+        margin-top: 5px;
+        height: 90%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &__nav {
+        width: 650px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        &-items {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        &-item {
+            min-width: 100px;
+            @include center;
+        }
+    }
+}
+
+@media screen and (max-width: $tableWidth) {
+    .header {
+    }
+}

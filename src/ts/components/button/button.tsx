@@ -2,8 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import cn from "classnames";
 import "./button.scss";
+import { useDarkTheme } from "Ts/utils/useDark";
 
-export interface ButtonProps {
+export interface IButton {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
     href?: string;
@@ -12,37 +13,44 @@ export interface ButtonProps {
     disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
-    children = "Button",
-    onClick = () => {
-        console.log("Button onClick function isn't provided");
-    },
-    className = "",
-    href = "",
-    outside = false,
-    disabled = false,
-    ...attrs
-}) => {
-    const classes: string = cn("button", className, disabled);
-    if (href) {
-        if (outside) {
+const Button: React.FC<IButton> = React.memo(
+    ({
+        children = "Button",
+        onClick = () => {
+            console.log("Button onClick function isn't provided");
+        },
+        className = "",
+        href = "",
+        outside = false,
+        disabled = false,
+        ...attrs
+    }) => {
+        const classes: string = useDarkTheme(cn("button", className, disabled));
+        if (href) {
+            if (outside) {
+                return (
+                    <a
+                        href={href}
+                        className={classes}
+                        {...attrs}
+                        target="_blank"
+                    >
+                        {children}
+                    </a>
+                );
+            }
             return (
-                <a href={href} className={classes} {...attrs} target="_blank">
+                <NavLink to={href} className={classes} {...attrs}>
                     {children}
-                </a>
+                </NavLink>
             );
         }
         return (
-            <NavLink to={href} className={classes} {...attrs}>
+            <button onClick={onClick} {...attrs} className={classes}>
                 {children}
-            </NavLink>
+            </button>
         );
     }
-    return (
-        <button onClick={onClick} {...attrs} className={classes}>
-            {children}
-        </button>
-    );
-};
+);
 
 export default Button;

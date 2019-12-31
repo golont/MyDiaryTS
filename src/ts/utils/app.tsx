@@ -6,34 +6,47 @@ export interface IApp {
     toggleTheme: () => void;
     lang: Lang;
     setLang: (l?: Lang) => void;
+    toggleLang: () => void;
 }
 
 export const AppContext = React.createContext<IApp>({
     isDark: false,
     toggleTheme: () => {},
     lang: "eng",
-    setLang: () => {}
+    setLang: () => {},
+    toggleLang: () => {}
 });
 
 interface IAppProvider {
     children: React.ReactNode;
 }
 
+const localLang: string = "language";
+const localTheme: string = "darkTheme";
+
 export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
     const [isDark, setDark] = useState<boolean>(
-        window.localStorage.getItem("darkTheme") === "true"
+        window.localStorage.getItem(localTheme) === "true"
     );
     const [language, setLanguage] = useState<Lang>(
-        (window.localStorage.getItem("language") as Lang) || "eng"
+        (window.localStorage.getItem(localLang) as Lang) || "eng"
     );
     const toggleTheme = (): void => {
         setDark(!isDark);
-        window.localStorage.setItem("darkTheme", JSON.stringify(!isDark));
+        window.localStorage.setItem(localTheme, JSON.stringify(!isDark));
     };
-
     const setLang = (lang: Lang): void => {
         setLanguage(lang);
-        window.localStorage.setItem("language", lang);
+        window.localStorage.setItem(localLang, lang);
+    };
+    const toggleLang = () => {
+        if (language === "eng") {
+            setLanguage("rus");
+            window.localStorage.setItem(localLang, "rus");
+        } else {
+            setLanguage("eng");
+            window.localStorage.setItem(localLang, "eng");
+        }
     };
 
     return (
@@ -42,7 +55,8 @@ export const AppProvider: React.FC<IAppProvider> = ({ children }) => {
                 isDark,
                 toggleTheme,
                 lang: language,
-                setLang
+                setLang,
+                toggleLang
             }}
         >
             {children}
@@ -62,6 +76,7 @@ export const useTheme = (): ITheme => {
 export interface ILang {
     lang: Lang;
     setLang: (l?: Lang) => void;
+    toggleLang: () => void;
 }
 
 export const useLang = (): ILang => {

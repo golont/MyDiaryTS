@@ -2,35 +2,47 @@ import React from "react";
 import { useLang } from "./app";
 interface Text {
     buttons: {
-        toggleLanguage: string;
-        toggleTheme: string;
+        about: string;
+        logout: string;
+        search: string;
+        home: string;
+        login: string;
+        registration: string;
     };
 }
 
 export let texts: Text;
 
-const LanguageTexts = React.memo(() => {
+const LanguageTexts = () => {
     const { lang } = useLang();
     switch (lang) {
         case "eng":
             texts = {
                 buttons: {
-                    toggleLanguage: "Toggle Language",
-                    toggleTheme: "Toggle Theme"
+                    about: "About",
+                    login: "Login",
+                    logout: "Logout",
+                    home: "Home",
+                    registration: "Registration",
+                    search: "Search"
                 }
             };
             break;
         case "rus":
             texts = {
                 buttons: {
-                    toggleLanguage: "Сменить язык",
-                    toggleTheme: "Сменить тему"
+                    about: "О проекте",
+                    login: "Войти",
+                    logout: "Выйти",
+                    home: "Главная",
+                    registration: "Регистрация",
+                    search: "Поиск"
                 }
             };
             break;
     }
 
     return <></>;
-});
+};
 
 export default LanguageTexts;

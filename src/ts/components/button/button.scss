@@ -6,12 +6,16 @@
     border-radius: 5px 20%;
     border: 3px solid $neutralMenuColor;
     padding: 5px 10px;
-    font-size: rem(26);
+    font-size: rem(22);
     color: $primaryColor;
     &:hover {
         border: 3px solid transparent;
         background: $warningColor;
         color: $mainFontColor;
         @include shadow();
+    }
+
+    &.button-dark {
+       
     }
 }

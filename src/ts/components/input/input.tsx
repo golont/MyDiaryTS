@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import cn from "classnames";
 import { inputObject } from "Ts/utils/input";
 import "./input.scss";
+import { useDarkTheme } from "Ts/utils/useDark";
 
 export type inputEvent = React.ChangeEvent<
     HTMLInputElement | HTMLTextAreaElement
@@ -15,46 +16,50 @@ interface InputProps {
     placeholder?: string;
 }
 
-const Input: React.FC<InputProps> = ({
-    type = "text",
-    onChange = () => {},
-    className = "",
-    value,
-    placeholder = "Type some text..."
-}) => {
-    const [v, setV] = useState<string>(value.value);
-    const classes: string = cn(
-        {
-            textarea: type === "textarea"
-        },
-        "input",
-        className
-    );
+const Input: React.FC<InputProps> = React.memo(
+    ({
+        type = "text",
+        onChange = () => {},
+        className = "",
+        value,
+        placeholder = "Type some text..."
+    }) => {
+        const [v, setV] = useState<string>(value.value);
+        const classes: string = useDarkTheme(
+            cn(
+                {
+                    textarea: type === "textarea"
+                },
+                "input",
+                className
+            )
+        );
 
-    const onChangeHandler = (e: inputEvent) => {
-        onChange(e);
-        setV(e.target.value);
-        value.value = e.target.value;
-    };
-    if (type === "textarea") {
+        const onChangeHandler = (e: inputEvent) => {
+            onChange(e);
+            setV(e.target.value);
+            value.value = e.target.value;
+        };
+        if (type === "textarea") {
+            return (
+                <textarea
+                    onChange={onChangeHandler}
+                    value={v}
+                    placeholder={placeholder}
+                    className={classes}
+                />
+            );
+        }
         return (
-            <textarea
+            <input
+                type={type}
                 onChange={onChangeHandler}
+                className={classes}
                 value={v}
                 placeholder={placeholder}
-                className={classes}
             />
         );
     }
-    return (
-        <input
-            type={type}
-            onChange={onChangeHandler}
-            className={classes}
-            value={v}
-            placeholder={placeholder}
-        />
-    );
-};
+);
 
 export default Input;

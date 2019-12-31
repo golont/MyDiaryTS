@@ -74,6 +74,25 @@ section,
     }
 }
 
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background: $containerColor;
+    border-left: rem(5) solid $borderColor;
+    border-right: rem(5) solid $borderColor;
+    position: relative;
+}
+
+.main {
+    z-index: 1;
+    position: relative;
+    padding-top: 120px;
+    min-height: 100vh;
+    height: 100%;
+}
+
 // Modules
 // @import "modules/my-module";
 @import "modules/blocks";
+@import "modules/header";

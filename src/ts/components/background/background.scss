@@ -10,3 +10,10 @@
         background: url("/assets/img/background-dark.jpg") 50% / cover fixed;
     }
 }
+
+
+@media screen and (max-width: $smDesktopWidth) {
+    .background, .background-dark {
+        background-position: left center;
+    }
+}
