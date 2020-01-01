@@ -41,11 +41,15 @@ section,
         padding: 36px 0;
     }
 
-    @media screen and (max-width: $desktopWidth) {
+    @media screen and (max-width: $smDesktopWidth) {
         padding: 28px 0;
     }
 
-    @media screen and (max-width: $desktopWidth) {
+    @media screen and (max-width: $tableWidth) {
+        padding: 24px 0;
+    }
+
+    @media screen and (max-width: $phoneWidth) {
         padding: 20px 0;
     }
 }

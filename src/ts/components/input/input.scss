@@ -2,7 +2,7 @@
     font-family: $mainFont;
     font-size: $mainFontSize;
     font-weight: $mainFontWeight;
-    transition: .5s all;
+    transition: 0.5s all;
     background: none;
     color: $mainFontColor;
     padding: rem(10);
@@ -15,12 +15,33 @@
     }
 
     &.input-dark {
-        background: white;
+        color: $mainFontColorDark;
+        border-bottom: 3px solid $warningColorDark;
+        &:focus {
+            border: 3px solid $warningColorDarken;
+        }
     }
 }
 
 .textarea {
-    &.textarea-dark {
+    margin: 10px;
+    background: $textAreaColor;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    @include shadow(1px, 2px, 10px, 10px);
+    
+    &:focus {
+        border: 1px solid transparent;
+        @include shadow(1px, 2px, 7px, 10px, $textAreaShadowColor);
+    }
 
+    &.textarea-dark {
+        color: $mainFontColorDark;
+        background: $neutralMenuColorDark;
+        border: 1px solid $warningColorDark;
+        @include shadow(1px, 2px, 10px, 10px, $primaryColorPartical);
+        &:focus {
+            @include shadow(1px, 2px, 7px, 10px, $textAreaColorDark);
+        }
     }
 }
