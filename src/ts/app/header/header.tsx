@@ -5,7 +5,7 @@ import Hamburger from "./hamburger";
 import { useDarkTheme } from "Ts/utils/useDark";
 
 const Header: React.FC = () => {
-    const [active, setActive] = useState(true);
+    const [active, setActive] = useState(false);
     const classes = useDarkTheme("header");
     return (
         <header className={classes}>

@@ -1,8 +1,8 @@
+import cn from "classnames";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import cn from "classnames";
-import "./button.scss";
 import { useDarkTheme } from "Ts/utils/useDark";
+import "./button.scss";
 
 export interface IButton {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import cn from "classnames";
+import React, { useState } from "react";
 import { inputObject } from "Ts/utils/input";
-import "./input.scss";
 import { useDarkTheme } from "Ts/utils/useDark";
+import "./input.scss";
 
 export type inputEvent = React.ChangeEvent<
     HTMLInputElement | HTMLTextAreaElement

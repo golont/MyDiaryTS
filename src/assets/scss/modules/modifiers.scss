@@ -7,12 +7,24 @@
             color: $mainFontColor;
             @include shadow();
             padding: 12px;
-            border: 1px solid darken($warningColor, 5%);
+            border: 1px solid $warningColorDarken;
 
             &:hover,
             &:focus {
-                border: 1px solid darken($warningColor, 5%);
+                border: 1px solid $warningColorDarken;
                 background-color: lighten($warningColor, 4%);
+            }
+
+            &.button-dark {
+                background: $neutralMenuColorDark;
+                color: $mainFontColorDark;
+                border-width: 1px;
+                &:hover,
+                &:focus {
+                    border: 1px solid $warningColorDarken;
+                    color: darken($mainFontColorDark, 5%);
+                    background-color: lighten($neutralMenuColorDark, 4%);
+                }
             }
 
             &::after {

@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
+import text, { IText } from "./text";
 
 export type Lang = "rus" | "eng";
 export interface IApp {
@@ -77,8 +78,10 @@ export interface ILang {
     lang: Lang;
     setLang: (l?: Lang) => void;
     toggleLang: () => void;
+    text: IText;
 }
 
 export const useLang = (): ILang => {
-    return useContext<IApp>(AppContext);
+    const context = useContext<IApp>(AppContext);
+    return { ...context, text: text(context.lang) };
 };

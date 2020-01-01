@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { toastObject } from "Ts/utils/toast";
 import Portal from "../portal";
 import "./toast.scss";
-import { toastObject } from "Ts/utils/toast";
 
 interface IToast {
     children: React.ReactNode;

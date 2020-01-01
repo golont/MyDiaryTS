@@ -10,12 +10,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-animation: togglerColor 1s ease;
     animation: togglerColor 1s ease;
-    -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
+    transition: .1s all;
 
-    &__lang {
+    &-lang {
         left: rem(10);
         bottom: rem(75);
         animation: none;
@@ -23,6 +22,14 @@
 
     &-dark {
         animation-direction: reverse;
+    }
+
+    &:hover {
+        transform: scale(.98);
+    }
+
+    &:active, :focus {
+        transform: scale(.96);
     }
 }
 
@@ -36,13 +43,13 @@
 
 @keyframes togglerColor {
     0% {
-        background: #f09b46;
-        color: #45161c;
-        border: 1px solid #45161c;
+        background: $warningColorDark;
+        color: $toggerColorDark;
+        border: 1px solid $toggerColorDark;
     }
     to {
-        background: #45161c;
-        color: #f09b46;
-        border: 1px solid #f09b46;
+        background: $toggerColorDark;
+        color: $neutralMenuColor;
+        border: 1px solid $neutralMenuColor;
     }
 }

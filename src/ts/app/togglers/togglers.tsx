@@ -18,7 +18,7 @@ const ThemeToggler: React.FC = React.memo(() => {
 
 const LangToggler: React.FC = React.memo(() => {
     const { lang, toggleLang } = useLang();
-    const classes = cn(useDarkTheme(`toggler toggler__lang`), lang);
+    const classes = cn(`toggler toggler-lang`, lang);
     return <Portal className={classes} onClick={toggleLang} />;
 });
 

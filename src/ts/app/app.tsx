@@ -1,8 +1,9 @@
 import React from "react";
-import Header from "./header";
-import Togglers from "./togglers";
 import Button from "Ts/components/button";
 import { useDarkTheme } from "Ts/utils/useDark";
+import Header from "./header";
+import Togglers from "./togglers";
+import { useRoutes } from "./routes";
 
 const App: React.FC = () => {
     return (
@@ -10,9 +11,7 @@ const App: React.FC = () => {
             <div className={useDarkTheme("wrapper")}>
                 <Header />
                 <div className="main">
-                    <Button />
-                    fdashjkfdhsajk
-                    fhklasdhfkjdas
+                    {useRoutes(false)}
                 </div>
             </div>
             <Togglers />

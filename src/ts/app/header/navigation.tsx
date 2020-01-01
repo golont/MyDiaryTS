@@ -7,13 +7,15 @@ interface INavigation {
 }
 
 const Navigation: React.FC<INavigation> = React.memo(({ active }) => {
-    const { authedItems } = useLinks();
+    const authed = false;
+    const { authedItems, notAuthedItems } = useLinks();
+    let links: React.ReactNode[];
+    authed ? (links = authedItems) : (links = notAuthedItems);
     const classes = cn("header__nav", { active });
-    console.log();
     return (
         <nav className={classes}>
             <ul className="header__nav-items">
-                {authedItems.map((item, i) => (
+                {links.map((item, i) => (
                     <li key={i} className="header__nav-item">
                         {item}
                     </li>

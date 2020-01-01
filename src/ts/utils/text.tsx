@@ -1,6 +1,6 @@
-import React from "react";
-import { useLang } from "./app";
-interface Text {
+import { Lang } from "./app";
+
+export interface IText {
     buttons: {
         about: string;
         logout: string;
@@ -11,25 +11,21 @@ interface Text {
     };
 }
 
-export let texts: Text;
-
-const LanguageTexts = () => {
-    const { lang } = useLang();
+const text = (lang: Lang) => {
     switch (lang) {
         case "eng":
-            texts = {
+            return {
                 buttons: {
                     about: "About",
                     login: "Login",
                     logout: "Logout",
                     home: "Home",
-                    registration: "Registration",
+                    registration: "Signup",
                     search: "Search"
                 }
             };
-            break;
         case "rus":
-            texts = {
+            return {
                 buttons: {
                     about: "О проекте",
                     login: "Войти",
@@ -39,10 +35,7 @@ const LanguageTexts = () => {
                     search: "Поиск"
                 }
             };
-            break;
     }
-
-    return <></>;
 };
 
-export default LanguageTexts;
+export default text;
