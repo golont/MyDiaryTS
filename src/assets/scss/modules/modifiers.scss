@@ -1,0 +1,67 @@
+.button {
+    @media screen and (min-width: $tableWidth) {
+        &.button-header {
+            position: relative;
+            display: inline-block;
+            background: $warningColor;
+            color: $mainFontColor;
+            @include shadow();
+            padding: 12px;
+            border: 1px solid darken($warningColor, 5%);
+
+            &:hover,
+            &:focus {
+                border: 1px solid darken($warningColor, 5%);
+                background-color: lighten($warningColor, 4%);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: -1em;
+                bottom: -1em;
+                left: -1em;
+                right: -1em;
+                border-radius: 5px 20%;
+                box-shadow: 0 0 0px $shadowColor, inset 0 0 0px $shadowColor;
+                transition: box-shadow 0.1s;
+            }
+
+            &:active {
+                background-color: $warningColor;
+                transform: scale(0.97);
+                box-shadow: -2px 2px 5px $shadowColor;
+
+                &::after {
+                    box-shadow: 0 0 2px $shadowColor,
+                        inset -3px 3px 1em $shadowColor;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tableWidth) {
+    .button {
+        &.button-header {
+            &:active,
+            &:hover,
+            &:focus {
+                box-shadow: none;
+                background: none;
+            }
+
+            &.button-dark {
+                &:active,
+                &:hover,
+                &:focus {
+                    color: $mainFontColorDark;
+                    background-color: $neutralMenuColorDark;
+                }
+                background-color: $neutralMenuColorDark;
+                color: $mainFontColorDark;
+                border: 3px solid transparent;
+            }
+        }
+    }
+}

@@ -4,18 +4,27 @@
     background: none;
     cursor: pointer;
     border-radius: 5px 20%;
-    border: 3px solid $neutralMenuColor;
+    border: 1px solid $neutralMenuColor;
     padding: 5px 10px;
     font-size: rem(22);
     color: $primaryColor;
     &:hover {
-        border: 3px solid transparent;
+        border: 1px solid transparent;
         background: $warningColor;
         color: $mainFontColor;
         @include shadow();
     }
 
     &.button-dark {
-       
+        background: $neutralMenuColorDark;
+        color: $mainFontColorDark;
+        border: 1px solid darken($warningColor, 5%);
+
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid darken($warningColor, 5%);
+            background-color: lighten($neutralMenuColorDark, 4%);
+        }
     }
 }

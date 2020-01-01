@@ -8,7 +8,8 @@ interface INavigation {
 
 const Navigation: React.FC<INavigation> = React.memo(({ active }) => {
     const { authedItems } = useLinks();
-    const classes = cn("header__nav", active);
+    const classes = cn("header__nav", { active });
+    console.log();
     return (
         <nav className={classes}>
             <ul className="header__nav-items">

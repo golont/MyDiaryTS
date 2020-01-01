@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./logo";
 import Navigation from "./navigation";
+import Hamburger from "./hamburger";
+import { useDarkTheme } from "Ts/utils/useDark";
 
-const Header: React.FC = () => (
-    <header className="header">
-        <Logo />
-        <Navigation active={true} />
-        {/* <Navigation isActive={isActive} isLogged={isLogged} />
-        <HamburgerMenu toggleActiveHandler={toggleActiveHandler} /> */}
-    </header>
-);
+const Header: React.FC = () => {
+    const [active, setActive] = useState(true);
+    const classes = useDarkTheme("header");
+    return (
+        <header className={classes}>
+            <Logo />
+            <Navigation active={active} />
+            <Hamburger
+                toggleActive={() => {
+                    setActive(a => !a);
+                }}
+            />
+        </header>
+    );
+};
 
 export default Header;

@@ -82,6 +82,14 @@ section,
     border-left: rem(5) solid $borderColor;
     border-right: rem(5) solid $borderColor;
     position: relative;
+
+    &-dark {
+        transition: .5s all;
+        background: $containerColorDark;
+        border-left: rem(5) solid $warningColorDark;
+        border-right: rem(5) solid $warningColorDark;
+        color: $mainFontColorDark;
+    }
 }
 
 .main {
@@ -94,5 +102,5 @@ section,
 
 // Modules
 // @import "modules/my-module";
-@import "modules/blocks";
+@import "modules/modifiers";
 @import "modules/header";

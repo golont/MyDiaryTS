@@ -8,7 +8,7 @@ import "./togglers.scss";
 
 const ThemeToggler: React.FC = React.memo(() => {
     const { toggleTheme } = useTheme();
-    const classes = useDarkTheme("theme-toggler");
+    const classes = useDarkTheme("toggler");
     return (
         <Portal className={classes} onClick={toggleTheme}>
             <Icon name="power" />
@@ -18,7 +18,7 @@ const ThemeToggler: React.FC = React.memo(() => {
 
 const LangToggler: React.FC = React.memo(() => {
     const { lang, toggleLang } = useLang();
-    const classes = cn(useDarkTheme(`theme-toggler theme-toggler__lang`), lang);
+    const classes = cn(useDarkTheme(`toggler toggler__lang`), lang);
     return <Portal className={classes} onClick={toggleLang} />;
 });
 

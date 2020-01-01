@@ -23,6 +23,7 @@ export const useLinks = () => {
             key="logout"
             onClick={() => {
                 //TODO: logout
+                console.log("logout")
             }}
             className="button-header"
         >
@@ -34,7 +35,9 @@ export const useLinks = () => {
         <Button key="login" href="/login" className="button-header">
             {texts.buttons.login}
         </Button>,
-        <Button key="reg" href="/re"
+        <Button key="reg" href="/registration">
+            {texts.buttons.registration}
+        </Button>
     ];
 
     return { notAuthedItems, authedItems };

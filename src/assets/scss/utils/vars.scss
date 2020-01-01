@@ -16,8 +16,13 @@ $smPhoneWidth: 320px;
 $blackout: #0000008f;
 $neutralMenuColor: #f0b478;
 $primaryColor: #535353;
-$secondaryColor: #45161c;
+$secondaryColor: #800000;
 $warningColor: #f09b46;
 $shadowColor: #00000033;
 $borderColor: #2b2b2bcf;
 $containerColor: #f2ffa875;
+
+$mainFontColorDark: #949494;
+$neutralMenuColorDark: #333336;
+$warningColorDark: darken($warningColor, 20%);
+$containerColorDark: #222226da;

@@ -165,3 +165,9 @@ li {
     padding: 0;
     list-style-type: none;
 }
+
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
