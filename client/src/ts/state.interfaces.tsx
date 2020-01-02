@@ -48,7 +48,7 @@ interface IPost {
     title: string;
     text: string;
     date: string;
-    files?: [File | string];
+    files?: (File | string)[];
 }
 
 interface IPaginate {
