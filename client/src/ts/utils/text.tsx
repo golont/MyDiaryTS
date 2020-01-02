@@ -9,9 +9,16 @@ export interface IText {
         login: string;
         registration: string;
     };
+    inputs: {
+        login: string[];
+        signup: string[];
+    };
+    toast: {
+        passwords: string;
+    };
 }
 
-const text = (lang: Lang) => {
+const text = (lang: Lang): IText => {
     switch (lang) {
         case "eng":
             return {
@@ -22,6 +29,19 @@ const text = (lang: Lang) => {
                     home: "Home",
                     registration: "Signup",
                     search: "Search"
+                },
+                inputs: {
+                    login: ["email / username / phone", "password"],
+                    signup: [
+                        "email",
+                        "username",
+                        "phone number",
+                        "password",
+                        "submit password"
+                    ]
+                },
+                toast: {
+                    passwords: "Passwords must be equals"
                 }
             };
         case "rus":
@@ -33,6 +53,19 @@ const text = (lang: Lang) => {
                     home: "Главная",
                     registration: "Регистрация",
                     search: "Поиск"
+                },
+                inputs: {
+                    login: ["email / имя / телефон", "Пароль"],
+                    signup: [
+                        "email",
+                        "Имя пользователя",
+                        "Номер телефона",
+                        "Пароль",
+                        "Подтвердить пароль"
+                    ]
+                },
+                toast: {
+                    passwords: "Пароли должны совпадать"
                 }
             };
     }

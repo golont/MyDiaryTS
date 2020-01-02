@@ -16,9 +16,7 @@ export interface IButton {
 const Button: React.FC<IButton> = React.memo(
     ({
         children = "Button",
-        onClick = () => {
-            console.log("Button onClick function isn't provided");
-        },
+        onClick = () => {},
         className = "",
         href = "",
         outside = false,

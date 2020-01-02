@@ -15,6 +15,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     plugins: [
         new webpack.SourceMapDevToolPlugin({
             filename: "[file].map"
+        }),
+        new webpack.DefinePlugin({
+            "provess.env": {
+                NODE_ENV: JSON.stringify("development")
+            }
         })
     ]
 });

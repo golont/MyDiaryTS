@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import DataPage from "./pages/data";
 import SearchPage from "./pages/search";
 import AboutPage from "./pages/about";
-import LoginPage from "./pages/login";
+import { LoginPage, SignupPage } from "./pages/authentication";
 
 export const useRoutes = (isAuthenticated: boolean): React.ReactNode => {
     const generalRoutes = useMemo(
@@ -37,7 +37,7 @@ export const useRoutes = (isAuthenticated: boolean): React.ReactNode => {
                 <LoginPage />
             </Route>
             <Route path="/signup" exact={true}>
-                <LoginPage />
+                <SignupPage />
             </Route>
             <Redirect to="/login" />
         </Switch>

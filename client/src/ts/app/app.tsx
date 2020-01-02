@@ -5,12 +5,15 @@ import Header from "./header";
 import Togglers from "./togglers";
 import { useRoutes } from "./routes";
 import axios from "axios";
+import service from "Ts/services/service";
 
 const App: React.FC = () => {
     useEffect(() => {
-        // axios.get("/bubilda").then(data => {
-        //     console.log(data.data);
-        // });
+        axios.get("http://localhost:5000/api/bubilda").then(data => {
+            console.log(data.data);
+        });
+
+        service.getBubilda().then(console.log);
     }, []);
     return (
         <div className="container">
@@ -18,7 +21,6 @@ const App: React.FC = () => {
                 <Header />
                 <div className="main">
                     {useRoutes(false)}
-                    fdajlk
                 </div>
             </div>
             <Togglers />

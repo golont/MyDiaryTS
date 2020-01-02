@@ -15,6 +15,4 @@ const Index: React.FC = () => (
     </AppProvider>
 );
 
-console.log("inint")
-
 ReactDOM.render(<Index />, document.getElementById("root"));

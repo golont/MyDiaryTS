@@ -1,4 +1,10 @@
 .button {
+    &-auth {
+        font-size: rem(34);
+        padding: rem(10);
+        margin: rem(12);
+    }
+
     @media screen and (min-width: $tableWidth) {
         &.button-header {
             position: relative;
@@ -75,5 +81,21 @@
                 border: 3px solid transparent;
             }
         }
+    }
+}
+
+.input {
+    &-auth {
+        margin: rem(12);
+        text-align: center;
+        min-width: 220px;
+    }
+}
+
+.toast {
+    &-danger {
+        background: $dangerColor;
+        padding: rem(10);
+        border-radius: 10px;
     }
 }

@@ -1,16 +1,31 @@
 import { useMemo } from "react";
+import { inputType } from "Ts/components/input/input";
+
+export type validType = "phone" | "email" | "text";
 
 export interface inputObject {
     value: string;
+    ref?: HTMLInputElement | HTMLTextAreaElement | null;
+    validType: validType;
+    type: inputType;
 }
 
-export function createInput(): inputObject {
+export function createInput(
+    type: inputType = "text",
+    validType: validType = "text"
+): inputObject {
     const inputObject: inputObject = {
-        value: ""
+        value: "",
+        ref: null,
+        type,
+        validType
     };
     return inputObject;
 }
 
-export const useInput = (): inputObject => {
-    return useMemo(createInput, []);
+export const useInput = (
+    type: inputType = "text",
+    validType: validType = "text"
+): inputObject => {
+    return useMemo(() => createInput(type, validType), []);
 };

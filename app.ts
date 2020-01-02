@@ -1,34 +1,30 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
+
 import t from "./routes/t";
 
 const app: express.Application = express();
 
+app.use(cors());
+app.options("*", cors());
+
 const PORT = process.env.PORT || 5000;
 
-app.get("/bubilda", (req, res) => {
+app.get("/api/bubilda", (req, res) => {
     res.json({
-        message: `App starting on port ${PORT}, NODE_ENV ${process.env.NODE_ENV} ${t}`
+        message: `App starting on port ${PORT} ${t}`
     });
 });
 
-console.log("TCL: process.env.NODE_ENV", process.env.NODE_ENV);
+app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));
 
-if (process.env.NODE_ENV === "production") {
-    console.log("PRODUCTION");
-    app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));
-
-    app.get("*", (req, res) => {
-        res.sendFile(
-            path.resolve(__dirname, "../", "client", "dist", "index.html")
-        );
-    });
-} else {
-    console.log("DEVELOPMENT");
-}
-
-app.listen(80, () => {
-    console.log(
-        `App starting on port ${PORT}, NODE_ENV ${process.env.NODE_ENV}`
+app.get("*", (req, res) => {
+    res.sendFile(
+        path.resolve(__dirname, "../", "client", "dist", "index.html")
     );
+});
+
+app.listen(PORT, () => {
+    console.log(`App starting on port ${PORT}`);
 });

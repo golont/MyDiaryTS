@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { inputObject } from "Ts/utils/input";
 import { useDarkTheme } from "Ts/utils/useDark";
 import "./input.scss";
@@ -7,9 +7,10 @@ import "./input.scss";
 export type inputEvent = React.ChangeEvent<
     HTMLInputElement | HTMLTextAreaElement
 >;
+export type inputType = "text" | "textarea" | "password";
 
 interface InputProps {
-    type?: "text" | "textarea";
+    type?: inputType;
     value: inputObject;
     onChange?: (e: inputEvent) => void;
     className?: string;
@@ -25,6 +26,7 @@ const Input: React.FC<InputProps> = React.memo(
         placeholder = "Type some text..."
     }) => {
         const [v, setV] = useState<string>(value.value);
+        const ref = useRef(null);
         const classes: string = useDarkTheme(
             cn(
                 {
@@ -34,6 +36,10 @@ const Input: React.FC<InputProps> = React.memo(
                 className
             )
         );
+
+        useEffect(() => {
+            value.ref = ref.current;
+        }, [ref]);
 
         const onChangeHandler = (e: inputEvent) => {
             onChange(e);
@@ -47,6 +53,7 @@ const Input: React.FC<InputProps> = React.memo(
                     value={v}
                     placeholder={placeholder}
                     className={classes}
+                    ref={ref}
                 />
             );
         }
@@ -57,6 +64,7 @@ const Input: React.FC<InputProps> = React.memo(
                 className={classes}
                 value={v}
                 placeholder={placeholder}
+                ref={ref}
             />
         );
     }
