@@ -25,6 +25,11 @@ class Service {
         };
         return output;
     };
+
+    getTime = async () => {
+        const body = await axios.get(`${baseUrl}time`);
+        return body.data;
+    };
 }
 
 export default new Service();

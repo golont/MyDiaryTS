@@ -7,6 +7,7 @@ import { AppProvider } from "Ts/utils/app";
 import "./assets/scss/main.scss";
 import { Provider } from "react-redux";
 import store from "Ts/redux/store/store";
+import timer from "Ts/redux/timer";
 
 const Index: React.FC = () => (
     <Provider store={store}>
@@ -18,5 +19,7 @@ const Index: React.FC = () => (
         </AppProvider>
     </Provider>
 );
+
+timer();
 
 ReactDOM.render(<Index />, document.getElementById("root"));

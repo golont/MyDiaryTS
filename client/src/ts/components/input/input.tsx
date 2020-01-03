@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { inputObject } from "Ts/utils/input";
 import { useDarkTheme } from "Ts/utils/useDark";
 import "./input.scss";

@@ -17,11 +17,11 @@ export interface ILogin {
 }
 
 const LoginPage: React.FC = () => {
+    const { text } = useLang();
     const toast = useToast();
-    const [remember, setRemember] = useState(false);
     const { login: auth } = useAuth();
     const { error, clearError, loading, request } = useRequest(service.login);
-    const { text } = useLang();
+    const [remember, setRemember] = useState(false);
     const [form] = useState<inputObject[]>([useInput(), useInput("password")]);
     useEffect(() => {
         const current = form[0].ref;
@@ -57,6 +57,12 @@ const LoginPage: React.FC = () => {
         e.currentTarget.classList.remove("input-invalid");
     };
 
+    const onRememberChange = ({
+        currentTarget
+    }: React.ChangeEvent<HTMLInputElement>) => {
+        setRemember(currentTarget.checked);
+    };
+
     return (
         <>
             {loading ? (
@@ -76,11 +82,7 @@ const LoginPage: React.FC = () => {
                             <input
                                 type="checkbox"
                                 className="input-checkbox"
-                                onChange={({
-                                    currentTarget
-                                }: React.ChangeEvent<HTMLInputElement>) => {
-                                    setRemember(currentTarget.checked);
-                                }}
+                                onChange={onRememberChange}
                                 checked={remember}
                             />
                             <div className="checkbox-rm" />

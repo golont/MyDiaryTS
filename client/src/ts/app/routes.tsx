@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import DataPage from "./pages/data";
-import SearchPage from "./pages/search";
+import { Redirect, Route, Switch } from "react-router-dom";
 import AboutPage from "./pages/about";
 import { LoginPage, SignupPage } from "./pages/authentication";
+import DataPage from "./pages/data";
+import SearchPage from "./pages/search";
 
 export const useRoutes = (isAuthenticated: boolean): React.ReactNode => {
     const generalRoutes = useMemo(

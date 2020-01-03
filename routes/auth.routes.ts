@@ -23,7 +23,6 @@ export interface INote {
 router.post("/signup", async (req, res) => {
     try {
         const body: ISignup = req.body;
-        console.log(body);
         const { email, username, phone, password } = body;
         const newPhone = phone.match(/[0-9]+/g)[0];
         const candidate = await User.findOne({

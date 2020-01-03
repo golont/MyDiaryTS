@@ -5,6 +5,7 @@ import express from "express";
 import mongoose from "mongoose";
 import path from "path";
 import auth from "./routes/auth.routes";
+import time from "./routes/time.routes";
 
 const PORT = process.env.PORT || 5000;
 const app: express.Application = express();
@@ -14,6 +15,7 @@ app.options("*", cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", auth);
+app.use("/api/", time);
 
 const useStatic = () => {
     app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));

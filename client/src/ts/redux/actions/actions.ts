@@ -1,10 +1,5 @@
 import { IAuthentication, ITimer } from "../state-interfaces";
-import {
-    AuthActionTypes,
-    SET_AUTHENTICATION,
-    SET_TIMER_COUNT,
-    TimerActionTypes
-} from "../types";
+import { AuthActionTypes, SET_AUTHENTICATION, SET_TIMER_COUNT, TimerActionTypes } from "../types";
 
 //Authentication actions
 export const setAuth = (auth: IAuthentication): AuthActionTypes => {
@@ -21,3 +16,6 @@ export const setTimerCount = (time: ITimer): TimerActionTypes => {
         payload: time
     };
 };
+
+//Data actions
+//Search actions

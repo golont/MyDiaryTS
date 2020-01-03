@@ -6,7 +6,6 @@ import { useHistory } from "react-router";
 const auth = "userData";
 
 export const useAuth = () => {
-    const [ready, setReady] = useState(false);
     const history = useHistory();
 
     const login = useCallback((body: IAuthentication, remember = false) => {
@@ -26,6 +25,11 @@ export const useAuth = () => {
         history.push("/");
     }, []);
 
+    return { login, logout };
+};
+
+export const useInit = () => {
+    const { login } = useAuth();
     useEffect(() => {
         let data: any = localStorage.getItem(auth);
         if (data) {
@@ -36,7 +40,5 @@ export const useAuth = () => {
                 userId: data.userId
             });
         }
-        setReady(true);
     }, []);
-    return { login, logout, ready };
 };

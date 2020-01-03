@@ -15,4 +15,5 @@ interface setTimer {
 }
 export type TimerActionTypes = setTimer;
 
-//
+//Data types 
+//Search types 

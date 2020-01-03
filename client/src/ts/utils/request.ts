@@ -15,7 +15,6 @@ export const useRequest = (request: Function): IRequest => {
         setLoading(true);
         try {
             const response = await request(...params);
-            console.log(response)
             setLoading(false);
             return response;
         } catch (e) {

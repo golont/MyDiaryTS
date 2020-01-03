@@ -12,7 +12,7 @@ function timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const Toast: React.FC<IToast> = ({ toast, showTime = 2000 }) => {
+const Toast: React.FC<IToast> = React.memo(({ toast, showTime = 2000 }) => {
     const [show, setShow] = useState<boolean>(false);
     const [node, setNode] = useState<React.ReactNode>(false);
     const showToast = async (inputNode: React.ReactNode) => {
@@ -35,6 +35,6 @@ const Toast: React.FC<IToast> = ({ toast, showTime = 2000 }) => {
             )}
         </>
     );
-};
+});
 
 export default Toast;

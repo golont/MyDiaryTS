@@ -12,7 +12,7 @@
     align-items: center;
     animation: togglerColor 1s ease;
     animation-fill-mode: forwards;
-    transition: .1s all;
+    transition: 0.1s all;
 
     &-lang {
         left: rem(10);
@@ -25,11 +25,12 @@
     }
 
     &:hover {
-        transform: scale(.98);
+        transform: scale(0.98);
     }
 
-    &:active, :focus {
-        transform: scale(.96);
+    &:active,
+    :focus {
+        transform: scale(0.96);
     }
 }
 

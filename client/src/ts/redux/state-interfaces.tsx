@@ -1,3 +1,5 @@
+import { Moment } from "moment";
+
 export const paginationInit: IPaginate = {
     currentPage: 1,
     notesPerPage: 10

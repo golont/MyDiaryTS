@@ -19,8 +19,8 @@ export interface ISignup {
 
 const SignupPage: React.FC = () => {
     const { text } = useLang();
-    const { error, loading, clearError, request } = useRequest(service.signup);
     const toast = useToast();
+    const { error, loading, clearError, request } = useRequest(service.signup);
     const history = useHistory();
     const [form] = useState<inputObject[]>([
         useInput("text", "email"),
