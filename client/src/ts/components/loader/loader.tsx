@@ -5,15 +5,17 @@ import "./loader.scss";
 const Loader: React.FC = React.memo(() => {
     const classes: string = useDarkTheme("lds-roller");
     return (
-        <div className={classes}>
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
-            <div />
+        <div className="loader-wrapper">
+            <div className={classes}>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+            </div>
         </div>
     );
 });

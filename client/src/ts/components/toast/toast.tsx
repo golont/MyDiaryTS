@@ -4,18 +4,24 @@ import Portal from "../portal";
 import "./toast.scss";
 
 interface IToast {
-    children: React.ReactNode;
     toast: toastObject;
     showTime?: number;
 }
 
-const Toast: React.FC<IToast> = ({ children, toast, showTime = 2500 }) => {
+function timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const Toast: React.FC<IToast> = ({ toast, showTime = 2000 }) => {
     const [show, setShow] = useState<boolean>(false);
-    const showToast = () => {
+    const [node, setNode] = useState<React.ReactNode>(false);
+    const showToast = async (inputNode: React.ReactNode) => {
+        setNode(inputNode);
         setShow(true);
         setTimeout(() => {
             setShow(false);
         }, showTime);
+        await timeout(showTime);
     };
     useEffect(() => {
         toast.show = showToast;
@@ -24,7 +30,7 @@ const Toast: React.FC<IToast> = ({ children, toast, showTime = 2500 }) => {
         <>
             {show && (
                 <Portal className="toast">
-                    <div className="toast__wrapper">{children}</div>
+                    <div className="toast__wrapper">{node}</div>
                 </Portal>
             )}
         </>

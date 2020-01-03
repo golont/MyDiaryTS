@@ -98,4 +98,10 @@
         padding: rem(10);
         border-radius: 10px;
     }
+
+    &-success {
+        background: $successColor;
+        padding: rem(10);
+        border-radius: 10px;
+    }
 }

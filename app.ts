@@ -1,30 +1,53 @@
-import express from "express";
-import path from "path";
+import bodyParser from "body-parser";
+import config from "config";
 import cors from "cors";
+import express from "express";
+import mongoose from "mongoose";
+import path from "path";
+import auth from "./routes/auth.routes";
 
-import t from "./routes/t";
-
+const PORT = process.env.PORT || 5000;
 const app: express.Application = express();
 
 app.use(cors());
 app.options("*", cors());
+app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 5000;
+app.use("/api/auth", auth);
 
-app.get("/api/bubilda", (req, res) => {
-    res.json({
-        message: `App starting on port ${PORT} ${t}`
+const useStatic = () => {
+    app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));
+    app.get("*", (req, res) => {
+        res.sendFile(
+            path.resolve(__dirname, "../", "client", "dist", "index.html")
+        );
     });
-});
+    console.log("Using static files ...");
+};
 
-app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));
+const start = async () => {
+    try {
+        await mongoose
+            .connect(config.get("mongoUri"), {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useCreateIndex: true
+            })
+            .then(() => {
+                console.log("Successfully connected to database...");
+            })
+            .catch(e => {
+                console.error(e.message);
+            });
+        app.listen(PORT, () => console.log(`App starting on port ${PORT}...`));
+    } catch (error) {
+        console.log("Server Error", error.message);
+        process.exit(1);
+    }
+};
 
-app.get("*", (req, res) => {
-    res.sendFile(
-        path.resolve(__dirname, "../", "client", "dist", "index.html")
-    );
-});
+start();
 
-app.listen(PORT, () => {
-    console.log(`App starting on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "development") {
+    useStatic();
+}

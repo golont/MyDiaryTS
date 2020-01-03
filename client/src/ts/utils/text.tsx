@@ -15,7 +15,11 @@ export interface IText {
     };
     toast: {
         passwords: string;
+        successSingup: string;
+        failureSignup: string;
+        failureLogin: string;
     };
+    checkbox: string;
 }
 
 const text = (lang: Lang): IText => {
@@ -41,8 +45,12 @@ const text = (lang: Lang): IText => {
                     ]
                 },
                 toast: {
-                    passwords: "Passwords must be equals"
-                }
+                    passwords: "Passwords must be equals",
+                    successSingup: "Signup completed successfully",
+                    failureSignup: "User credentials are unavailable",
+                    failureLogin: "Wrong credentials"
+                },
+                checkbox: "Remember me"
             };
         case "rus":
             return {
@@ -65,8 +73,12 @@ const text = (lang: Lang): IText => {
                     ]
                 },
                 toast: {
-                    passwords: "Пароли должны совпадать"
-                }
+                    passwords: "Пароли должны совпадать",
+                    failureSignup: "Данные пользователя недоступны",
+                    successSingup: "Регистрация прошла успешно",
+                    failureLogin: "Введенные данные неверны"
+                },
+                checkbox: "Запомнить"
             };
     }
 };

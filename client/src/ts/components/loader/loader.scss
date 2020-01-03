@@ -19,7 +19,7 @@
 
 .lds-roller div:after {
     content: " ";
-    transition: .5s all;
+    transition: 0.5s all;
     display: block;
     position: absolute;
     width: 6px;
@@ -103,4 +103,11 @@
 .lds-roller div:nth-child(8):after {
     top: 45px;
     left: 10px;
+}
+
+.loader-wrapper {
+    position: absolute;
+    margin-top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
 }

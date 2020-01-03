@@ -1,0 +1,4 @@
+{
+    "jwtSecret": "Misheviy Plushka",
+    "mongoUri": "mongodb+srv://golont:yy4ndexUserDtfnb4@cluster0-2ebqx.mongodb.net/MyDiaryV2?retryWrites=true&w=majority"
+}

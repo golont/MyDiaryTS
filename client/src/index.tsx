@@ -5,14 +5,18 @@ import App from "Ts/app/app";
 import Background from "Ts/components/background";
 import { AppProvider } from "Ts/utils/app";
 import "./assets/scss/main.scss";
+import { Provider } from "react-redux";
+import store from "Ts/redux/store/store";
 
 const Index: React.FC = () => (
-    <AppProvider>
-        <Router>
-            <App />
-            <Background />
-        </Router>
-    </AppProvider>
+    <Provider store={store}>
+        <AppProvider>
+            <Router>
+                <App />
+                <Background />
+            </Router>
+        </AppProvider>
+    </Provider>
 );
 
 ReactDOM.render(<Index />, document.getElementById("root"));

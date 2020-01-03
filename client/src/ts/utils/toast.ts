@@ -1,13 +1,14 @@
 import { useMemo } from "react";
 
 export interface toastObject {
-    show: Function;
+    show: (node: React.ReactNode) => any;
 }
 
+const toastObject: toastObject = {
+    show: () => {}
+};
+
 export function createToast(): toastObject {
-    const toastObject: toastObject = {
-        show: Function
-    };
     return toastObject;
 }
 

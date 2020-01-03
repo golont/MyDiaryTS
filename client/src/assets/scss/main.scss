@@ -35,22 +35,22 @@ body {
 section,
 .section {
     position: relative;
-    padding: 40px 0;
+    padding-top: 40px;
 
     @media screen and (max-width: $desktopWidth) {
-        padding: 36px 0;
+        padding-top: 36px;
     }
 
     @media screen and (max-width: $smDesktopWidth) {
-        padding: 28px 0;
+        padding-top: 28px;
     }
 
     @media screen and (max-width: $tableWidth) {
-        padding: 24px 0;
+        padding-top: 24px;
     }
 
     @media screen and (max-width: $phoneWidth) {
-        padding: 20px 0;
+        padding-top: 20px;
     }
 }
 
@@ -88,7 +88,7 @@ section,
     position: relative;
 
     &-dark {
-        transition: .5s all;
+        transition: 0.5s all;
         background: $containerColorDark;
         border-left: rem(5) solid $warningColorDark;
         border-right: rem(5) solid $warningColorDark;
@@ -109,3 +109,4 @@ section,
 @import "modules/modifiers";
 @import "modules/header";
 @import "modules/authentication";
+@import "modules/checkbox";

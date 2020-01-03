@@ -4,7 +4,7 @@ import Navigation from "./navigation";
 import Hamburger from "./hamburger";
 import { useDarkTheme } from "Ts/utils/useDark";
 
-const Header: React.FC = () => {
+const Header: React.FC = React.memo(() => {
     const [active, setActive] = useState(false);
     const classes = useDarkTheme("header");
     return (
@@ -18,6 +18,6 @@ const Header: React.FC = () => {
             />
         </header>
     );
-};
+});
 
 export default Header;
