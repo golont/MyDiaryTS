@@ -1,0 +1,18 @@
+.note {
+    margin-top: rem(40);
+    font-size: rem(36);
+    &__header,
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        align-items: flex-end;
+    }
+    &__footer {
+        align-items: cetner;
+    }
+
+    &__text {
+        min-height: 1.5rem;
+    }
+}

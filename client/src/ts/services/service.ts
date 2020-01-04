@@ -15,6 +15,13 @@ class Service {
         return body.data;
     };
 
+    getNotes = async (token: string) => {
+        const body = await axios.get(`${baseUrl}notes/`, {
+            headers: { auth: token }
+        });
+        return body.data.notes;
+    };
+
     login = async (login: ILogin) => {
         const body = await axios.post(`${baseUrl}auth/login`, login);
         const { token, userId, done } = body.data;

@@ -15,6 +15,7 @@ interface InputProps {
     onChange?: (e: inputEvent) => void;
     className?: string;
     placeholder?: string;
+    trim?: boolean;
 }
 
 const Input: React.FC<InputProps> = React.memo(
@@ -23,9 +24,10 @@ const Input: React.FC<InputProps> = React.memo(
         onChange = () => {},
         className = "",
         value,
-        placeholder = "Type some text..."
+        placeholder = "Type some text...",
+        trim = false
     }) => {
-        const [v, setV] = useState<string>(value.value);
+        const [v, setV] = useState<string | undefined>(value.value);
         const ref = useRef(null);
         const classes: string = useDarkTheme(
             cn(
@@ -36,6 +38,9 @@ const Input: React.FC<InputProps> = React.memo(
                 className
             )
         );
+        useEffect(() => {
+            setV(value.value);
+        }, [value.value]);
 
         useEffect(() => {
             value.ref = ref.current;
@@ -43,9 +48,15 @@ const Input: React.FC<InputProps> = React.memo(
 
         const onChangeHandler = (e: inputEvent) => {
             onChange(e);
-            setV(e.target.value);
-            value.value = e.target.value;
+            let output = e.target.value;
+            if (trim) {
+                output = output.trim();
+            }
+            setV(output);
+            value.value = output;
+            return output;
         };
+
         if (type === "textarea") {
             return (
                 <textarea

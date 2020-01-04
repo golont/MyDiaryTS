@@ -11,10 +11,10 @@ import { validateForm } from "Ts/utils/validation";
 import Form from "./form";
 
 export interface ISignup {
-    email: string;
-    username: string;
-    phone: string;
-    password: string;
+    email?: string;
+    username?: string;
+    phone?: string;
+    password?: string;
 }
 
 const SignupPage: React.FC = () => {
@@ -23,11 +23,11 @@ const SignupPage: React.FC = () => {
     const { error, loading, clearError, request } = useRequest(service.signup);
     const history = useHistory();
     const [form] = useState<inputObject[]>([
-        useInput("text", "email"),
+        useInput({ validType: "email" }),
         useInput(),
-        useInput("text", "phone"),
-        useInput("password"),
-        useInput("password")
+        useInput({ validType: "phone" }),
+        useInput({ type: "password" }),
+        useInput({ type: "password" })
     ]);
 
     const passNode = <div className="toast-danger">{text.toast.passwords}</div>;

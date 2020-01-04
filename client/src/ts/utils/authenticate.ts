@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import actions from "Ts/redux/actions";
 import { IAuthentication, initState } from "Ts/redux/state-interfaces";
-import { useHistory } from "react-router";
 
 const auth = "userData";
 
@@ -10,12 +10,10 @@ export const useAuth = () => {
 
     const login = useCallback((body: IAuthentication, remember = false) => {
         actions.setAuth(body);
-
+        const { token, userId } = body;
+        actions.fetchNoteRuquest(token);
         if (remember) {
-            localStorage.setItem(
-                auth,
-                JSON.stringify({ token: body.token, userId: body.userId })
-            );
+            localStorage.setItem(auth, JSON.stringify({ token, userId }));
         }
     }, []);
 

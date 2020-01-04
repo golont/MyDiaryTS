@@ -6,16 +6,18 @@ import mongoose from "mongoose";
 import path from "path";
 import auth from "./routes/auth.routes";
 import time from "./routes/time.routes";
+import notes from "./routes/notes.routes";
 
 const PORT = process.env.PORT || 5000;
 const app: express.Application = express();
 
-app.use(cors());
+app.use(cors()); 
 app.options("*", cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", auth);
 app.use("/api/", time);
+app.use("/api/notes", notes);
 
 const useStatic = () => {
     app.use("/", express.static(path.join(__dirname, "../", "client", "dist")));

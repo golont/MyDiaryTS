@@ -1,5 +1,3 @@
-import { Moment } from "moment";
-
 export const paginationInit: IPaginate = {
     currentPage: 1,
     notesPerPage: 10
@@ -26,7 +24,7 @@ export const initState: AppState = {
     data: {
         error: false,
         loading: false,
-        lastNote: {},
+        lastNote: { date: "", _id: "", text: "", title: "" },
         previousNotes: [],
         pagination: paginationInit,
         totalNotes: 0
@@ -34,13 +32,12 @@ export const initState: AppState = {
 };
 
 export interface IAuthentication {
-    token?: string;
+    token: string;
     userId?: string;
     isAuthenticated: boolean;
 }
 
 export interface ITimer {
-    //time and date in momentjs format now IDK is there some inferfaces for it
     restTime: string;
     todaysDate: string;
 }
@@ -55,30 +52,30 @@ export interface INote {
 
 export interface IPaginate {
     currentPage: number;
-    notesPerPage: number;
+    notesPerPage?: number;
 }
 
 export interface IData {
     error: boolean;
     loading: boolean;
-    lastNote: INote | {};
+    lastNote: INote;
     totalNotes: number;
     previousNotes: INote[];
     pagination: IPaginate;
 }
 
 export interface ISearch {
-    minDate: string;
-    maxDate: string;
-    from: string;
-    to: string;
-    notes: INote[];
+    minDate?: string;
+    maxDate?: string;
+    from?: string;
+    to?: string;
+    notes?: INote[];
     pagination: IPaginate;
 }
 
 export interface AppState {
     auth: IAuthentication;
     timer: ITimer;
-    data?: IData;
+    data: IData;
     search?: ISearch;
 }

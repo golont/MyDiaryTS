@@ -27,6 +27,7 @@ const Form: React.FC<Props> = ({
                 className="input-auth"
                 placeholder={names[i]}
                 type={field.type}
+                trim={true}
             />
         ))}
         <Button className="button-auth">{submitName}</Button>

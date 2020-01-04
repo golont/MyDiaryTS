@@ -35,22 +35,22 @@ body {
 section,
 .section {
     position: relative;
-    padding-top: 40px;
+    padding: 40px;
 
     @media screen and (max-width: $desktopWidth) {
-        padding-top: 36px;
+        padding: 36px;
     }
 
     @media screen and (max-width: $smDesktopWidth) {
-        padding-top: 28px;
+        padding: 28px;
     }
 
     @media screen and (max-width: $tableWidth) {
-        padding-top: 24px;
+        padding: 24px;
     }
 
     @media screen and (max-width: $phoneWidth) {
-        padding-top: 20px;
+        padding: 20px;
     }
 }
 
@@ -110,3 +110,4 @@ section,
 @import "modules/header";
 @import "modules/authentication";
 @import "modules/checkbox";
+@import "modules/data-page";

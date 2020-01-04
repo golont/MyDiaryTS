@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { inputEvent } from "Ts/components/input/input";
 import Loader from "Ts/components/loader";
-import actions from "Ts/redux/actions";
 import service from "Ts/services/service";
 import { useLang } from "Ts/utils/app";
+import { useAuth } from "Ts/utils/authenticate";
 import { inputObject, useInput } from "Ts/utils/input";
 import { useRequest } from "Ts/utils/request";
 import { useToast } from "Ts/utils/toast";
 import { validateForm } from "Ts/utils/validation";
 import Form from "./form";
-import { useAuth } from "Ts/utils/authenticate";
 
 export interface ILogin {
-    identifier: string;
-    password: string;
+    identifier?: string;
+    password?: string;
 }
 
 const LoginPage: React.FC = () => {
@@ -22,7 +21,11 @@ const LoginPage: React.FC = () => {
     const { login: auth } = useAuth();
     const { error, clearError, loading, request } = useRequest(service.login);
     const [remember, setRemember] = useState(false);
-    const [form] = useState<inputObject[]>([useInput(), useInput("password")]);
+    const [form] = useState<inputObject[]>([
+        useInput(),
+        useInput({ type: "password" })
+    ]);
+
     useEffect(() => {
         const current = form[0].ref;
         const len = current!.getAttribute("placeholder")!.length;

@@ -12,7 +12,7 @@ const schema = new Schema(
         text: { type: String },
         date: { type: String, default: moment().format("DD.MM.YYYY") },
         files: [{ type: Types.ObjectId, ref: "File" }],
-        user: { type: Types.ObjectId, ref: "User" }
+        userId: { type: Types.ObjectId, ref: "User" }
     },
     { timestamps: true }
 );
