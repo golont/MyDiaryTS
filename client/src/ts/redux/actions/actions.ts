@@ -10,7 +10,8 @@ import {
     FETCH_NOTES_FAILURE,
     PaginationActionTypes,
     PlaceType,
-    SET_PAGINATION
+    SET_PAGINATION,
+    SET_LAST_NOTE
 } from "../types";
 
 //Authentication actions
@@ -39,6 +40,14 @@ export const fetchNoteSuccess = (payload: INote[]): DataActionTypes => ({
 
 export const fetchNoteFailure = (payload: Error): DataActionTypes => ({
     type: FETCH_NOTES_FAILURE,
+    payload
+});
+
+export const setLastNote = (payload: {
+    title?: string;
+    text?: string;
+}): DataActionTypes => ({
+    type: SET_LAST_NOTE,
     payload
 });
 

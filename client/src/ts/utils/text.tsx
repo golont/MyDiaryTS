@@ -12,6 +12,8 @@ export interface IText {
     inputs: {
         login: string[];
         signup: string[];
+        textarea: string;
+        note: string;
     };
     toast: {
         passwords: string;
@@ -42,7 +44,9 @@ const text = (lang: Lang): IText => {
                         "phone number",
                         "password",
                         "submit password"
-                    ]
+                    ],
+                    note: "Note",
+                    textarea: "Note your thoughts here..."
                 },
                 toast: {
                     passwords: "Passwords must be equals",
@@ -70,7 +74,9 @@ const text = (lang: Lang): IText => {
                         "Номер телефона",
                         "Пароль",
                         "Подтвердить пароль"
-                    ]
+                    ],
+                    note: "Запись",
+                    textarea: "Пишите свои мысли тут..."
                 },
                 toast: {
                     passwords: "Пароли должны совпадать",

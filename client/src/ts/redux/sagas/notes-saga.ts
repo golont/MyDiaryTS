@@ -1,15 +1,17 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import service from "Ts/services/service";
 import * as actions from "../actions/actions";
-import { fetchNotesRequest, FETCH_NOTES_REQUEST } from "../types";
+import { fetchNotesRequest, FETCH_NOTES_REQUEST, resetState } from "../types";
 
 function* noteWorker({ token }: fetchNotesRequest) {
     try {
         const posts = yield call(service.getNotes, token);
         yield put(actions.fetchNoteSuccess(posts));
     } catch (error) {
-        console.error(error);
         yield put(actions.fetchNoteFailure(error));
+        if (error.response.status === 403) {
+            yield put(resetState());
+        }
     }
 }
 

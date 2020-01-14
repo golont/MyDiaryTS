@@ -5,7 +5,8 @@ import {
     PaginationActionTypes,
     SET_PAGINATION,
     FETCH_NOTES_FAILURE,
-    FETCH_NOTES_SUCCESS
+    FETCH_NOTES_SUCCESS,
+    SET_LAST_NOTE
 } from "../types";
 
 export const dataReducer = (
@@ -45,6 +46,11 @@ export const dataReducer = (
                 lastNote,
                 previousNotes: allNotes.reverse(),
                 totalNotes: len
+            };
+        case SET_LAST_NOTE:
+            return {
+                ...state,
+                lastNote: { ...state.lastNote, ...action.payload }
             };
         default:
             return state;

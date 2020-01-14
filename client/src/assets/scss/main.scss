@@ -35,22 +35,22 @@ body {
 section,
 .section {
     position: relative;
-    padding: 40px;
+    padding: 40px rem(12);
 
     @media screen and (max-width: $desktopWidth) {
-        padding: 36px;
+        padding-top: 36px;
     }
 
     @media screen and (max-width: $smDesktopWidth) {
-        padding: 28px;
+        padding-top: 28px;
     }
 
     @media screen and (max-width: $tableWidth) {
-        padding: 24px;
+        padding-top: 24px;
     }
 
     @media screen and (max-width: $phoneWidth) {
-        padding: 20px;
+        padding-top: 20px;
     }
 }
 

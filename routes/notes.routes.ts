@@ -32,7 +32,7 @@ router.get(
                     {
                         date: today,
                         text: "",
-                        title: `Post #${notes.length + 1}`
+                        title: `Note #${notes.length + 1}`
                     },
                     userId
                 );

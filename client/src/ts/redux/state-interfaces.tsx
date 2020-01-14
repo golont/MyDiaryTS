@@ -13,14 +13,14 @@ export const initState: AppState = {
         restTime: "",
         todaysDate: ""
     },
-    search: {
-        minDate: "",
-        maxDate: "",
-        from: "",
-        to: "",
-        notes: [],
-        pagination: paginationInit
-    },
+    // search: {
+    //     minDate: "",
+    //     maxDate: "",
+    //     from: "",
+    //     to: "",
+    //     notes: [],
+    //     pagination: paginationInit
+    // },
     data: {
         error: false,
         loading: false,

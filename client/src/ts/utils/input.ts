@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { inputType } from "Ts/components/input/input";
 
 export type validType = "phone" | "email" | "text";
@@ -14,13 +14,12 @@ export function createInput(data?: inputObject): inputObject {
     if (data) {
         const {
             value = "",
-            ref = null,
             type = "text",
             validType = "text"
         } = data;
         return {
+            ...data,
             value,
-            ref,
             type,
             validType
         };
@@ -34,5 +33,5 @@ export function createInput(data?: inputObject): inputObject {
 }
 
 export const useInput = (data?: inputObject): inputObject => {
-    return useMemo(() => createInput(data), []);
+    return useMemo(() => createInput(data), [data]);
 };

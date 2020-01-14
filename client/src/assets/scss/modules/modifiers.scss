@@ -1,4 +1,8 @@
 .button {
+    &-save {
+        font-size: rem(38);
+    }
+
     &-auth {
         font-size: rem(34);
         padding: rem(10);
@@ -90,6 +94,12 @@
         text-align: center;
         min-width: 220px;
     }
+
+    @media screen and (max-width: $phoneWidth) {
+        &-title {
+            width: 100%;
+        }
+    }
 }
 
 .toast {
@@ -109,5 +119,6 @@
 .textarea {
     &-note {
         width: 100%;
+        overflow: hidden;
     }
 }

@@ -1,16 +1,8 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
-import { authenticatoinReducer } from "../reducers/auth-reducer";
-import { timerReducer } from "../reducers/timer-reducer";
-import { dataReducer } from "../reducers/data-reducer";
 import { noteWatcher } from "../sagas/notes-saga";
-
-const reducer = combineReducers({
-    auth: authenticatoinReducer,
-    data: dataReducer,
-    timer: timerReducer
-});
+import { reducer } from "../reducers/root-reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 

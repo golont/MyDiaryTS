@@ -38,12 +38,17 @@ const Input: React.FC<InputProps> = React.memo(
                 className
             )
         );
+
         useEffect(() => {
-            setV(value.value);
-        }, [value.value]);
+            value.value = v;
+        }, [v]);
 
         useEffect(() => {
             value.ref = ref.current;
+
+            if (value.ref) {
+                value.ref!.style.height = `${value.ref!.scrollHeight}px`;
+            }
         }, [ref]);
 
         const onChangeHandler = (e: inputEvent) => {
@@ -53,7 +58,6 @@ const Input: React.FC<InputProps> = React.memo(
                 output = output.trim();
             }
             setV(output);
-            value.value = output;
             return output;
         };
 
@@ -68,6 +72,7 @@ const Input: React.FC<InputProps> = React.memo(
                 />
             );
         }
+
         return (
             <input
                 type={type}

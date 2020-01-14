@@ -1,4 +1,10 @@
 import { IAuthentication, ITimer, INote, IPaginate } from "./state-interfaces";
+
+//ResetType
+export const RESET_STATE = "RESET_STATE";
+export type ResetState = typeof RESET_STATE;
+export const resetState = () => ({ type: RESET_STATE });
+
 //Authentication types
 export const SET_AUTHENTICATION = "SET_AUTHENTICATION";
 interface setAuth {
@@ -19,6 +25,7 @@ export type TimerActionTypes = setTimer;
 export const FETCH_NOTES_REQUEST = "FETCH_NOTES_REQUEST";
 export const FETCH_NOTES_SUCCESS = "FETCH_NOTES_SUCCESS";
 export const FETCH_NOTES_FAILURE = "FETCH_NOTES_FAILURE";
+export const SET_LAST_NOTE = "SET_LAST_NOTE";
 
 export interface fetchNotesRequest {
     type: typeof FETCH_NOTES_REQUEST;
@@ -35,10 +42,19 @@ interface fetchNotesFailure {
     payload: Error;
 }
 
+interface setLastNote {
+    type: typeof SET_LAST_NOTE;
+    payload: {
+        title?: string;
+        text?: string;
+    };
+}
+
 export type DataActionTypes =
     | fetchNotesFailure
     | fetchNotesSuccess
-    | fetchNotesRequest;
+    | fetchNotesRequest
+    | setLastNote;
 
 //Lastpost
 
